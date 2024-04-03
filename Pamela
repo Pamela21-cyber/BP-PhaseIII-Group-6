@@ -1,0 +1,115 @@
+## Software Architecture
+
+This is how the components work with each other: User Interface (UI): This component interacts directly with the user, presenting the interface for inputting information such as age, weight, height, activity level, and goals (e.g., weight loss, maintenance, or gain).It gathers user input and sends it to the calculation engine for processing. Calculation Engine: This is the core component responsible for performing the actual calculations based on the input provided by the user. It utilizes established formulas and algorithms to calculate the user's Basal Metabolic Rate (BMR), Total Daily Energy Expenditure (TDEE), and recommended caloric intake based on the user's goals. The calculation engine takes into account factors such as gender, age, weight, height, activity level, and goals to generate accurate calorie estimates. Data Storage: This component may not be visible to the user but is crucial for storing user profiles, historical data, and preferences. It can be a database or some form of persistent storage where user information and calculations are stored for future reference. Output Display:Once the calculations are performed, the results are presented back to the user through the UI. The output display component formats and presents the calculated values in a user-friendly manner, such as displaying the recommended daily caloric intake and macronutrient breakdown. Feedback and Error Handling: This component provides feedback to the user regarding the input provided and any errors encountered during the calculation process. It ensures that the user receives clear messages in case of invalid input or calculation failures, guiding them to correct any mistakes. Overall, these components work together seamlessly to provide users with an efficient and accurate calorie calculation experience, helping them make informed decisions about their dietary and fitness goals.
+
+## Detailed Design
+
+User Interface (UI): Draw a box labeled "UI" representing the user interface component. Calculation Engine: Draw another box labeled "Calculation Engine" representing the core component responsible for performing calculations. Data Storage: Add a box labeled "Data Storage" to represent the component responsible for storing user profiles and data. Output Display: Draw a box labeled "Output Display" representing the component responsible for presenting the calculated results back to the user. Feedback and Error Handling: Include another box labeled "Feedback & Error Handling" to represent the component providing feedback and handling errors. Arrows:Draw arrows to show the flow of information between the components. For example, arrows from the UI to the Calculation Engine indicate that user input is sent to the calculation engine for processing. Arrows from the Calculation Engine to the Output Display show that calculated results are sent back to the UI for display. This diagram will visually represent how the different components of the program interact with each other to provide the desired functionality.
+
+3.
+
+## Explanation:
+
+• CalorieCalculator: This class represents the main controller or orchestrator of the program. It contains instances of other classes and coordinates their interactions.
+
+• UserInterface (UI): This class handles interactions with the user, such as gathering input and displaying output.
+
+• CalculationEngine: This class performs the actual calorie calculations based on user input.
+
+• DataStorage: This class manages the storage and retrieval of user profiles and data.
+
+• OutputDisplay: This class formats and presents the calculated results back to the user.
+
+• FeedbackHandler: This class provides feedback to the user and handles errors invalid input.
+
+•UserInterface (Ul): This class handles interactions with the user, such as gathering input and displaying output.
+
+• CalculationEngine: This class performs the actual calorie calculations based on user input.
+
+• DataStorage: This class manages the storage and retrieval of user profiles and data.
+
+• OutputDisplay: This class formats and presents the calculated results back to the user.
+
+• FeedbackHandler: This class provides feedback to the user and handles errors or invalid input.
+
+The arrows indicate composition relationships, indicating that the CalorieCalculator class is composed of instances of the other classes. This means that the lifetime of the composed objects is managed by the CalorieCalculator class.
+
+4.
+
+## Explanation:
+
+• The sequence diagram starts with the user selecting options on the user interface.
+
+• The UserInterface component gathers input from the user and sends it to the CalorieCalculator.
+
+• The CalorieCalculator forwards the input to the CalculationEngine, which performs the necessary calculations.
+
+• The CalculationEngine queries the DataStorage for any required data.
+
+• After calculations are done, the DataStorage stores any relevant information.
+
+• The CalculationEngine sends the results back to the Calorie Calculator.
+
+• The CalorieCalculator requests the OutputDisplay component to generate and display the output.
+
+• The OutputDisplay generates the output and sends it back to the CalorieCalculator.
+
+• Finally, the CalorieCalculator displays the output to the user through the UserInterface.
+
+This sequence illustrates the flow of messages between the components during the calculation and display process in the calorie calculator program.
+
+5.
+
+## Explanation:
+
+• UserProfiles: This table stores information about each user, such as their name, age, gender, weight, height, activity level, and goal (e.g., weight loss, maintenance, or gain). UserlD serves as the primary key.
+
+• UserProfiles: This table stores information about each user, such as their name, age, gender, weight, height, activity level, and goal (e.g., weight loss, maintenance, or gain). UserlD serves as the primary key.
+
+• CalculatedResults: This table stores the calculated results for each user, such as their Basal Metabolic Rate (BMR), Total Daily Energy Expenditure (TDEE), and recommended daily caloric intake. ResultID serves as the primary key, and UserlDserves as a foreign key referencing the UserProfiles table.Byorganizing the data into these two tables, you can efficiently store user profiles and their corresponding calculated results, allowing for easy retrieval and analysis. Additionally, you can establish relationships between users and their results for further data analysis and reporting purposes.
+
+6.
+
+## Explanation:
+
+• User: Represents the actor interacting with the calorie calculator program.
+
+• Calorie Calculator: Represents the main system or software application.
+
+• Calculate Calories: Use case where the user inputs their information (age, weight, height, activity level, etc.) and requests the program to calculate their daily caloric needs.
+
+• Display Results: Use case where the program displays the calculated results back to the user.
+
+In this diagram, the user interacts with the calorie calculator program to perform two main tasks: inputting their information to calculate calories and viewing the calculated results. These are represented as the two primary use cases of the system.
+
+7.
+
+## Explanation:
+
+• Start: The start of the activity.
+
+• Input Data: User inputs their information (age, weight, height, activity level, etc.).
+
+• Calculate Calories: The program calculates the user's daily caloric needs based on the input data.
+
+• Display Results: The program displays the calculated results back to the user.
+
+• End: The end of the activity.
+
+This diagram illustrates the sequence of steps involved in the main process of the calorie calculator program, from inputting data to displaying results.
+
+8.
+
+## Explanation:
+
+• Input Data: Initial state where the user inputs their information.
+
+• Calculating: State where the program is processing the input data and calculating the user's daily caloric needs.
+
+• Displaying: State where the program is displaying the calculated results back to the user.
+
+• Done: Final states indicating the completion of the respective tasks (calculation and display).
+
+This diagram illustrates the possible states of the calorie calculator program
+
+and the transitions between them during the process of inputting data, calculating calories, and displaying results.
